@@ -31,6 +31,7 @@ class GameScene: SKScene {
     
     override func sceneDidLoad() {
         self.scaleMode = .aspectFill
+        addChild(SKAudioNode(fileNamed: "ひよこ曲.mp3"))
     }
     
     override func didMove(to view: SKView) {

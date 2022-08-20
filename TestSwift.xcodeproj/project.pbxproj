@@ -18,6 +18,8 @@
 		AA8239862559032E001C2811 /* GameSceneTouches.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8239852559032D001C2811 /* GameSceneTouches.swift */; };
 		AAF63E2625411ED80083DC50 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF63E2525411ED80083DC50 /* TitleScene.swift */; };
 		AAF63E2B25411F0E0083DC50 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF63E2A25411F0E0083DC50 /* GameOverScene.swift */; };
+		CE9FDF8F28B0FE0400F7D4B5 /* ひよこ曲.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE9FDF8E28B0FE0400F7D4B5 /* ひよこ曲.mp3 */; };
+		CE9FDF9128B0FFD400F7D4B5 /* ひよこ鳴き声.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE9FDF9028B0FFD400F7D4B5 /* ひよこ鳴き声.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		AA8239852559032D001C2811 /* GameSceneTouches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneTouches.swift; sourceTree = "<group>"; };
 		AAF63E2525411ED80083DC50 /* TitleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 		AAF63E2A25411F0E0083DC50 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		CE9FDF8E28B0FE0400F7D4B5 /* ひよこ曲.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ひよこ曲.mp3"; sourceTree = "<group>"; };
+		CE9FDF9028B0FFD400F7D4B5 /* ひよこ鳴き声.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ひよこ鳴き声.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 		AA63BD4A254061240074B741 /* TestSwift */ = {
 			isa = PBXGroup;
 			children = (
+				CE9FDF8D28B0FDCD00F7D4B5 /* mp3 */,
 				AA63BD822540711A0074B741 /* App */,
 				AA63BD83254071230074B741 /* Views */,
 				AA63BD842540712F0074B741 /* Scenes */,
@@ -199,6 +204,15 @@
 				AAF63E2A25411F0E0083DC50 /* GameOverScene.swift */,
 			);
 			path = GameOverScene;
+			sourceTree = "<group>";
+		};
+		CE9FDF8D28B0FDCD00F7D4B5 /* mp3 */ = {
+			isa = PBXGroup;
+			children = (
+				CE9FDF8E28B0FE0400F7D4B5 /* ひよこ曲.mp3 */,
+				CE9FDF9028B0FFD400F7D4B5 /* ひよこ鳴き声.mp3 */,
+			);
+			path = mp3;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,7 +318,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE9FDF8F28B0FE0400F7D4B5 /* ひよこ曲.mp3 in Resources */,
 				AA63BD53254061250074B741 /* Preview Assets.xcassets in Resources */,
+				CE9FDF9128B0FFD400F7D4B5 /* ひよこ鳴き声.mp3 in Resources */,
 				AA63BD50254061250074B741 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

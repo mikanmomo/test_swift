@@ -8,6 +8,7 @@
 import SpriteKit
 
 extension GameScene {
+    
     override func touchesBegan(_ touches: Set<UITouch>,
                                with event: UIEvent?) {
         for touch: AnyObject in touches {
@@ -24,6 +25,9 @@ extension GameScene {
                     let mog = SKSpriteNode(imageNamed: "mog3.png")  // やられたモグラを作る
                     mog.position = touchNode.position               // 位置を指定する
                     self.addChild(mog)                              // やられたモグラを表示させる
+                    
+                    let piyopiyo = SKAction.playSoundFileNamed("ひよこ鳴き声.mp3", waitForCompletion: true)
+                    self.run(piyopiyo)
                     
                     // 【モグラに回転しながら上に飛び出して消えるアクションをつける】
                     // モグラを１回転するアクション
