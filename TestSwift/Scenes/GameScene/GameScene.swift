@@ -11,11 +11,11 @@ class GameScene: SKScene {
     let sscale: Float = 0.5
     
     // モグラの位置（[x,y]のセットで5個所）を作る
-    let mogPoint = [[200, 300],
-                    [600, 400],
-                    [300, 600],
-                    [650, 700],
-                    [250, 900]]
+    let mogPoint = [[200, 150],
+                    [600, 200],
+                    [300, 300],
+                    [650, 350],
+                    [250, 450]]
     let images = ["attachment-5.jpg","attachment-6.jpg","attachment-8.jpg"]
     let images2 = ["attachment-4.jpg","attachment-7.jpg","attachment-9.jpg"]
     
@@ -51,75 +51,7 @@ class GameScene: SKScene {
                                       y: 600)
         self.addChild(scoreLabel)
         
-        // モグラの準備をする
-        for i in 0...4 {
-            let randomInt = Int.random(in: 0..<3)
-            
-            //卵の画像
-            let egg = SKSpriteNode(imageNamed: images[randomInt])
-            
-            egg.setScale(0.5)
-            egg.position = CGPoint(x: Int(Float(mogPoint[i][0]) * sscale),
-                                   y: Int(Float(mogPoint[i][1]) * sscale))
-            self.addChild(egg)
-            
-            //卵が割れてひよこが出てくる画像
-            let egg2 = SKSpriteNode(imageNamed: images2[randomInt])
-            
-            egg2.setScale(0.5)
-            egg2.position = CGPoint(x: Int(Float(mogPoint[i][0]) * sscale),
-                                   y: Int(Float(mogPoint[i][1]) * sscale))
-            self.addChild(egg2)
-            
-            
-            mogArray.append(egg)
-            
-            // 【モグラが穴から出たり入ったりするアクションをつける】
-            // モグラを地下（-1000）に移動するアクション
-            let action1 = SKAction.moveTo(y: -1000,
-                                          duration: 0.0)
-            // 0〜4秒（2秒を中心として前後4秒範囲）でランダムに時間待ち
-            let action2 = SKAction.wait(forDuration: 2.0,
-                                        withRange: 4.0)
-            // もぐらを穴の位置に移動するアクション
-            let action3 = SKAction.moveTo(y: CGFloat(Int(Float(mogPoint[i][1]))),
-                                          duration: 0.0)
-            // 0〜2秒（1秒を中心として前後2秒範囲）でランダムに時間待ち
-            let action4 = SKAction.wait(forDuration: 1.0,
-                                        withRange: 2.0)
-            
-            let action5 = SKAction.moveTo(y: -1000,
-                                          duration: 0.0)
-            
-            // action1〜action4を順番に行う
-            let actionS = SKAction.sequence([action1,
-                                             action2,
-                                             action3,
-                                             action4,
-                                             action5])
-            // actionSをずっと繰り返す
-            let actionR = SKAction.repeatForever(actionS)
-            
-            // モグラを地下（-1000）に移動するアクション
-            let action2_1 = SKAction.moveTo(y: -1000,
-                                          duration: 0.0)
-            
-            // もぐらを穴の位置に移動するアクション
-            let action2_2 = SKAction.moveTo(y: CGFloat(Int(Float(mogPoint[i][1]))),
-                                          duration: 0.0)
-            
-            // 0〜4秒（2秒を中心として前後4秒範囲）でランダムに時間待ち
-            let action2_3 = SKAction.wait(forDuration: 2.0,
-                                        withRange: 4.0)
-            
-            let action2_S = SKAction.sequence([action2_1,
-                                             action2_2,
-                                             action2_3])
-            
-            // モグラに「穴から出たり入ったりするアクション」をつける
-            egg.run(actionR, completion: {egg2.run(action2_S)})
         
-        }
         // 残り時間を表示する
         timeLabel.text = "Time:\(timeCount)"
         timeLabel.horizontalAlignmentMode = .left
@@ -141,6 +73,8 @@ class GameScene: SKScene {
         timeCount = timeCount - 1                             // 残り秒数を 1 減らす
         timeLabel.text = "Time:\(timeCount)"    // 残り秒数を表示
         
+        
+        
         if timeCount < 1 {  // もし 0 になったらゲームオーバー
             // タイマーを停止させる
             myTimer.invalidate()
@@ -153,6 +87,74 @@ class GameScene: SKScene {
             let transition = SKTransition.crossFade(withDuration: 1.0)
             self.view?.presentScene(scene,
                                     transition: transition)
+        }else{
+            // モグラの準備をする
+                let randomInt = Int.random(in: 0..<3)
+                
+                //卵の画像
+                let egg = SKSpriteNode(imageNamed: images[randomInt])
+                
+                egg.setScale(0.5)
+                egg.position = CGPoint(x: Int(Float(mogPoint[randomInt][0]) * sscale),
+                                       y: Int(Float(mogPoint[randomInt][1]) * sscale))
+                self.addChild(egg)
+                
+                //卵が割れてひよこが出てくる画像
+                let egg2 = SKSpriteNode(imageNamed: images2[randomInt])
+                
+                egg2.setScale(0.5)
+                egg2.position = CGPoint(x: Int(Float(mogPoint[randomInt][0]) * sscale),
+                                       y: Int(Float(mogPoint[randomInt][1]) * sscale))
+                self.addChild(egg2)
+                
+                
+                mogArray.append(egg2)
+                
+                // 【モグラが穴から出たり入ったりするアクションをつける】
+                // モグラを地下（-1000）に移動するアクション
+                let action1 = SKAction.moveTo(y: -1000,
+                                              duration: 0.0)
+                // 0〜4秒（2秒を中心として前後4秒範囲）でランダムに時間待ち
+                let action2 = SKAction.wait(forDuration: 2.0,
+                                            withRange: 4.0)
+                // もぐらを穴の位置に移動するアクション
+                let action3 = SKAction.moveTo(y: CGFloat(Int(Float(mogPoint[randomInt][1]))),
+                                              duration: 0.0)
+                // 0〜2秒（1秒を中心として前後2秒範囲）でランダムに時間待ち
+                let action4 = SKAction.wait(forDuration: 1.0,
+                                            withRange: 2.0)
+                
+                let action5 = SKAction.moveTo(y: -1000,
+                                              duration: 0.0)
+                
+                // action1〜action4を順番に行う
+                let actionS = SKAction.sequence([action1,
+                                                 action2,
+                                                 action3,
+                                                 action4,
+                                                 action5])
+                
+                // モグラを地下（-1000）に移動するアクション
+                let action2_1 = SKAction.moveTo(y: -1000,
+                                              duration: 0.0)
+                egg2.run(action2_1)
+                // もぐらを穴の位置に移動するアクション
+                let action2_2 = SKAction.moveTo(y: CGFloat(Int(Float(mogPoint[randomInt][1]))),
+                                              duration: 0.0)
+                
+                // 0〜4秒（2秒を中心として前後4秒範囲）でランダムに時間待ち
+                let action2_3 = SKAction.wait(forDuration: 2.0,
+                                            withRange: 4.0)
+                
+                let action2_S = SKAction.sequence([action2_2,
+                                                   action2_3,
+                                                   action2_1])
+                
+                // モグラに「穴から出たり入ったりするアクション」をつける
+                egg.run(actionS, completion: {
+                    egg2.run(action2_S)
+                })
+            
         }
     }
 }
