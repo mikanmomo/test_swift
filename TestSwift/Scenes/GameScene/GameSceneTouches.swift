@@ -16,7 +16,7 @@ extension GameScene {
             let touchNode = self.atPoint(location)
             for i in 0...4 {    // 0〜4まで繰り返す
                 // もし、タッチしたものがモグラだったら、やっつける
-                if touchNode == mogArray[i] {
+                if touchNode == egg2Array[i] {
                     // スコアをアップして、表示する
                     score += 10
                     scoreLabel.text = "SCORE:\(score)"
